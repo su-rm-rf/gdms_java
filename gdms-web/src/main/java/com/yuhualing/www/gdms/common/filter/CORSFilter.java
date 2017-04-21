@@ -24,7 +24,7 @@ public class CORSFilter implements Filter {
         response.setHeader("X-Powered-By", "3.2.1");
         response.setHeader("Content-Type", "application/json;charset=utf-8");
 
-        filterChain.doFilter(servletRequest, s);
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override
