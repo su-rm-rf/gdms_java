@@ -71,4 +71,4 @@
     DispatcherServlet
     注解: @Contrller, @RequestMapping, @Resource
     
-[相关知识点](#/Java.md)
+[相关知识点](Java.md)
