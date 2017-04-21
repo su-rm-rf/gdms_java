@@ -1,5 +1,6 @@
 package com.yuhualing.www.gdms.service.impl;
 
+import com.yuhualing.www.gdms.bo.IShopBO;
 import com.yuhualing.www.gdms.dao.IShopDao;
 import com.yuhualing.www.gdms.dto.ShopDTO;
 import com.yuhualing.www.gdms.entity.Shop;
@@ -20,6 +21,9 @@ public class ShopServiceImpl implements IShopService {
 
     @Resource
     IShopDao shopDao;
+
+    @Resource
+    IShopBO shopBo;
 
     @Override
     public Serializable saveShop(ShopDTO shopDTO) {
@@ -63,21 +67,26 @@ public class ShopServiceImpl implements IShopService {
     }
 
     @Override
-    public List<ShopDTO> queryShopList() {
-        List<Shop> shopList = shopDao.queryShopList();
+    public List<ShopDTO> queryShopList(ShopDTO shopDTO) {
+        Shop shop = new Shop();
+        shop.setShopName(shopDTO.getShopName());
+        shop.setShopCity(shopDTO.getShopCity());
+        shop.setShopAddress(shopDTO.getShopAddress());
+
+        List<Shop> shopList = shopDao.queryShopList(shop);
 
         List<ShopDTO> shopDTOS = new ArrayList<ShopDTO>();
         Iterator<Shop> iterator = shopList.iterator();
         while(iterator.hasNext()) {
-            Shop shop = iterator.next();
+            Shop shop2 = iterator.next();
 
-            ShopDTO shopDTO = new ShopDTO();
-            shopDTO.setShopId(shop.getShopId());
-            shopDTO.setShopName(shop.getShopName());
-            shopDTO.setShopCity(shop.getShopCity());
-            shopDTO.setShopAddress(shop.getShopAddress());
+            ShopDTO shopDTO2 = new ShopDTO();
+            shopDTO2.setShopId(shop2.getShopId());
+            shopDTO2.setShopName(shop2.getShopName());
+            shopDTO2.setShopCity(shop2.getShopCity());
+            shopDTO2.setShopAddress(shop2.getShopAddress());
 
-            shopDTOS.add(shopDTO);
+            shopDTOS.add(shopDTO2);
         }
 
         return shopDTOS;

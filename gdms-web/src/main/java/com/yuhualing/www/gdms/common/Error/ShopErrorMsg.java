@@ -1,4 +1,4 @@
-package com.yuhualing.www.gdms.common;
+package com.yuhualing.www.gdms.common.Error;
 
 /**
  * Created by macbook on 17/4/20.

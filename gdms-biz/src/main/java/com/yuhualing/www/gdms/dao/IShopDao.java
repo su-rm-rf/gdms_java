@@ -18,5 +18,5 @@ public interface IShopDao {
 
     public Shop queryShopById(String shopId);
 
-    public List<Shop> queryShopList();
+    public List<Shop> queryShopList(Shop shop);
 }

@@ -17,7 +17,7 @@
     ">
 
     <!-- 包扫描 -->
-    <context:component-scan base-package="com.yuhualing.www.gdms.dao, com.yuhualing.www.gdms.service" />
+    <context:component-scan base-package="com.yuhualing.www.gdms.dao, com.yuhualing.www.gdms.service, com.yuhualing.www.gdms.bo" />
 
     <!-- properties供后面使用 -->
     <context:property-placeholder location="classpath:jdbc.properties" />

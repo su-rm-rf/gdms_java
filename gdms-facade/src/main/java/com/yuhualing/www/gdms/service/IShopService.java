@@ -18,5 +18,5 @@ public interface IShopService {
 
     public ShopDTO queryShopById(String shopId);
 
-    public List<ShopDTO> queryShopList();
+    public List<ShopDTO> queryShopList(ShopDTO shopDTO);
 }

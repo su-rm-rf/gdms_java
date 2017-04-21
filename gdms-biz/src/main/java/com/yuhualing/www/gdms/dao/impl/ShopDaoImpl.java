@@ -2,6 +2,7 @@ package com.yuhualing.www.gdms.dao.impl;
 
 import com.yuhualing.www.gdms.dao.IShopDao;
 import com.yuhualing.www.gdms.entity.Shop;
+import com.yuhualing.www.gdms.util.StringUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -47,8 +48,19 @@ public class ShopDaoImpl implements IShopDao {
     }
 
     @Override
-    public List<Shop> queryShopList() {
-        return this.getSession().createQuery("from Shop where delete_flag = ?")
-                .setParameter(0, "N").list();
+    public List<Shop> queryShopList(Shop shop) {
+        StringBuffer sql = new StringBuffer("select * from shop where delete_flag = 'N' ");
+
+        if(!StringUtil.isBlank(shop.getShopName())) {
+            sql.append(" and shop_name like '%").append( shop.getShopName() ).append("%'");
+        }
+        if(!StringUtil.isBlank(shop.getShopCity())) {
+            sql.append(" and shop_city = '").append( shop.getShopCity() ).append("'");
+        }
+        if(!StringUtil.isBlank(shop.getShopAddress())) {
+            sql.append(" and shop_address like '%").append( shop.getShopAddress() ).append("%'");
+        }
+
+        return this.getSession().createNativeQuery(String.valueOf(sql), Shop.class).getResultList();
     }
 }

@@ -1,6 +1,6 @@
 package com.yuhualing.www.gdms.controller;
 
-import com.yuhualing.www.gdms.common.ShopErrorMsg;
+import com.yuhualing.www.gdms.common.Error.ShopErrorMsg;
 import com.yuhualing.www.gdms.dto.ShopDTO;
 import com.yuhualing.www.gdms.service.IShopService;
 import org.springframework.stereotype.Controller;
@@ -56,8 +56,8 @@ public class ShopController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public List<ShopDTO> queryShopList() {
-        List<ShopDTO> shopList = shopService.queryShopList();
+    public List<ShopDTO> queryShopList(ShopDTO shopDTO) {
+        List<ShopDTO> shopList = shopService.queryShopList(shopDTO);
         return shopList;
     }
 
