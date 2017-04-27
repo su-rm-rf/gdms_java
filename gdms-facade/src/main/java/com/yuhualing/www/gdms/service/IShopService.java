@@ -10,13 +10,13 @@ import java.util.List;
  */
 public interface IShopService {
 
-    public Serializable saveShop(ShopDTO shopDTO);
+    public int saveShop(ShopDTO shopDTO);
 
-    public void deleteShopById(String shopId);
+    public void deleteShopById(Integer shopId);
 
     public void updateShop(ShopDTO shopDTO);
 
-    public ShopDTO queryShopById(String shopId);
+    public ShopDTO queryShopById(Integer shopId);
 
     public List<ShopDTO> queryShopList(ShopDTO shopDTO);
 }

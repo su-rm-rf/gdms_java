@@ -8,6 +8,8 @@
 ----
     shop( shop_id, shop_name, shop_city, shop_address )
     goods( goods_id, shop_id, goods_name, goods_desc )
+
+- [建表语句](#/gdms-biz/src/main/resources/sql/shop_goods.sql)
     
 工程模块结构
 ----
@@ -28,7 +30,6 @@
         src/main/java
             bo 实现类
             dao 接口
-            dao 实现类
             entity 实体类
             service 实现类
         src/main/resources
@@ -59,16 +60,15 @@
     AOP
     注解: @Service
     
-配置Hibernate
+MyBatis
 ----
-    dataSource
-    sessionFactory
-    transactionManager
-    注解: @Repository
+    创建数据库和表
+    根据表反向生成Model、DAO、mapping语句
     
 配置SpringMVC
 ----
     DispatcherServlet
     注解: @Contrller, @RequestMapping, @Resource
     
-[相关知识点](Java.md)
+- [相关知识点](Java.md)
+- [mybatis generator with maven](http://www.mybatis.org/generator/running/runningWithMaven.html)

@@ -5,7 +5,7 @@ package com.yuhualing.www.gdms.dto;
  */
 public class ShopDTO {
 
-    private String shopId;
+    private Integer shopId;
 
     private String shopName;
 
@@ -16,18 +16,17 @@ public class ShopDTO {
     public ShopDTO() {
     }
 
-    public ShopDTO(String shopId, String shopName, String shopCity, String shopAddress) {
-        this.shopId = shopId;
+    public ShopDTO(String shopName, String shopCity, String shopAddress) {
         this.shopName = shopName;
         this.shopCity = shopCity;
         this.shopAddress = shopAddress;
     }
 
-    public String getShopId() {
+    public Integer getShopId() {
         return shopId;
     }
 
-    public void setShopId(String shopId) {
+    public void setShopId(Integer shopId) {
         this.shopId = shopId;
     }
 

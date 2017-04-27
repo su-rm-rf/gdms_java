@@ -9,12 +9,12 @@ public class ShopErrorMsg {
 
     private String errorMsg;
 
-    private String shopId;
+    private Integer shopId;
 
     public ShopErrorMsg() {
     }
 
-    public ShopErrorMsg(String errorCode, String errorMsg, String shopId) {
+    public ShopErrorMsg(String errorCode, String errorMsg, Integer shopId) {
         this.errorCode = errorCode;
         this.errorMsg = errorMsg;
         this.shopId = shopId;
@@ -36,11 +36,11 @@ public class ShopErrorMsg {
         this.errorMsg = errorMsg;
     }
 
-    public String getShopId() {
+    public Integer getShopId() {
         return shopId;
     }
 
-    public void setShopId(String shopId) {
+    public void setShopId(Integer shopId) {
         this.shopId = shopId;
     }
 

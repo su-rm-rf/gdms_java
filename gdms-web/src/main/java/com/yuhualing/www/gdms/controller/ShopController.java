@@ -26,7 +26,7 @@ public class ShopController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     @ResponseBody
     public ShopErrorMsg saveShop(ShopDTO shopDTO) throws IOException {
-        String shopId = (String) shopService.saveShop(shopDTO);
+        Integer shopId = shopService.saveShop(shopDTO);
         ShopErrorMsg error = new ShopErrorMsg("101", "保存成功", shopId);
         return error;
     }
@@ -34,8 +34,8 @@ public class ShopController {
     @RequestMapping(value = "/delete/{shopId}", method = RequestMethod.POST)
     @ResponseBody
     public ShopErrorMsg deleteShopById(@PathVariable String shopId) throws IOException {
-        shopService.deleteShopById(shopId);
-        ShopErrorMsg error = new ShopErrorMsg("101", "删除成功", shopId);
+        shopService.deleteShopById( Integer.parseInt(shopId) );
+        ShopErrorMsg error = new ShopErrorMsg("101", "删除成功", Integer.parseInt(shopId) );
         return error;
     }
 
@@ -50,7 +50,7 @@ public class ShopController {
     @RequestMapping(value = "/{shopId}", method = RequestMethod.GET)
     @ResponseBody
     public ShopDTO queryShopById(@PathVariable String shopId) throws IOException {
-        ShopDTO shopDTO = shopService.queryShopById(shopId);
+        ShopDTO shopDTO = shopService.queryShopById( Integer.parseInt(shopId) );
         return shopDTO;
     }
 

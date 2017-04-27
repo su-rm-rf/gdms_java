@@ -1,9 +1,8 @@
 package com.yuhualing.www.gdms.service.impl;
 
-import com.yuhualing.www.gdms.bo.IShopBO;
-import com.yuhualing.www.gdms.dao.IShopDao;
+import com.yuhualing.www.gdms.dao.ShopMapper;
 import com.yuhualing.www.gdms.dto.ShopDTO;
-import com.yuhualing.www.gdms.entity.Shop;
+import com.yuhualing.www.gdms.model.Shop;
 import com.yuhualing.www.gdms.service.IShopService;
 import org.springframework.stereotype.Service;
 
@@ -14,48 +13,44 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by macbook on 17/4/20.
+ * Created by macbook on 17/4/24.
  */
 @Service("shopService")
 public class ShopServiceImpl implements IShopService {
 
     @Resource
-    IShopDao shopDao;
-
-    @Resource
-    IShopBO shopBo;
+    ShopMapper shopMapper;
 
     @Override
-    public Serializable saveShop(ShopDTO shopDTO) {
+    public int saveShop(ShopDTO shopDTO) {
         Shop shop = new Shop();
         shop.setShopName(shopDTO.getShopName());
         shop.setShopCity(shopDTO.getShopCity());
         shop.setShopAddress(shopDTO.getShopAddress());
-        shop.setDelete_flag("N");
 
-        return shopDao.saveShop(shop);
+        int shopId = shopMapper.insert(shop);
+        return shopId;
     }
 
     @Override
-    public void deleteShopById(String shopId) {
-        shopDao.deleteShopById(shopId);
+    public void deleteShopById(Integer shopId) {
+        shopMapper.deleteByPrimaryKey(shopId);
     }
 
     @Override
     public void updateShop(ShopDTO shopDTO) {
-        Shop shop = new Shop();
-        shop.setShopId(shopDTO.getShopId());
+        Shop shop = shopMapper.selectByPrimaryKey(shopDTO.getShopId());
+
         shop.setShopName(shopDTO.getShopName());
         shop.setShopCity(shopDTO.getShopCity());
         shop.setShopAddress(shopDTO.getShopAddress());
-        shop.setDelete_flag("N");
 
-        shopDao.updateShop(shop);
+        shopMapper.updateByPrimaryKeySelective(shop);
     }
 
     @Override
-    public ShopDTO queryShopById(String shopId) {
-        Shop shop = shopDao.queryShopById(shopId);
+    public ShopDTO queryShopById(Integer shopId) {
+        Shop shop = shopMapper.selectByPrimaryKey(shopId);
 
         ShopDTO shopDTO = new ShopDTO();
         shopDTO.setShopId(shop.getShopId());
@@ -73,20 +68,20 @@ public class ShopServiceImpl implements IShopService {
         shop.setShopCity(shopDTO.getShopCity());
         shop.setShopAddress(shopDTO.getShopAddress());
 
-        List<Shop> shopList = shopDao.queryShopList(shop);
+        List<Shop> shopList = shopMapper.select(shop);
 
         List<ShopDTO> shopDTOS = new ArrayList<ShopDTO>();
-        Iterator<Shop> iterator = shopList.iterator();
-        while(iterator.hasNext()) {
-            Shop shop2 = iterator.next();
+        Iterator<Shop> shopIterator = shopList.iterator();
+        while(shopIterator.hasNext()) {
+            Shop shop2 = shopIterator.next();
 
-            ShopDTO shopDTO2 = new ShopDTO();
-            shopDTO2.setShopId(shop2.getShopId());
-            shopDTO2.setShopName(shop2.getShopName());
-            shopDTO2.setShopCity(shop2.getShopCity());
-            shopDTO2.setShopAddress(shop2.getShopAddress());
+            ShopDTO shopDTO1 = new ShopDTO();
+            shopDTO1.setShopId(shop2.getShopId());
+            shopDTO1.setShopName(shop2.getShopName());
+            shopDTO1.setShopCity(shop2.getShopCity());
+            shopDTO1.setShopAddress(shop2.getShopAddress());
 
-            shopDTOS.add(shopDTO2);
+            shopDTOS.add(shopDTO1);
         }
 
         return shopDTOS;
