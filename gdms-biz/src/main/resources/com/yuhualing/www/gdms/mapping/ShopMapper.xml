@@ -23,6 +23,12 @@
     select
     <include refid="Base_Column_List" />
     from t_shop
+    <where>
+      true
+      <if test="shopName != null">
+        and shop_name = #{shopName,jdbcType=VARCHAR}
+      </if>
+    </where>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_shop
