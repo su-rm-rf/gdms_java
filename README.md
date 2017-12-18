@@ -43,6 +43,7 @@
             common
                 filter
                 error
+                interceptor
             controller
         src/main/resources
             servlet.xml
