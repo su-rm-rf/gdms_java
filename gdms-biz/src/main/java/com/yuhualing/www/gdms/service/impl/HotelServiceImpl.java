@@ -5,6 +5,8 @@ import com.yuhualing.www.gdms.dto.HotelDTO;
 import com.yuhualing.www.gdms.model.Hotel;
 import com.yuhualing.www.gdms.service.IHotelService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.List;
  * Created by macbook on 2017/12/18.
  */
 @Service("hotelService")
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 public class HotelServiceImpl implements IHotelService {
 
     @Resource

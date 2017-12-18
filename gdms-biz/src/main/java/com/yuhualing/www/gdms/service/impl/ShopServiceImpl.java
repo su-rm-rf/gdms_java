@@ -4,9 +4,11 @@ import com.yuhualing.www.gdms.dao.ShopMapper;
 import com.yuhualing.www.gdms.dto.ShopDTO;
 import com.yuhualing.www.gdms.model.Shop;
 import com.yuhualing.www.gdms.service.IShopService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,9 +17,10 @@ import java.util.List;
  * Created by macbook on 17/4/24.
  */
 @Service("shopService")
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 public class ShopServiceImpl implements IShopService {
 
-    @Resource
+    @Autowired
     ShopMapper shopMapper;
 
     @Override
