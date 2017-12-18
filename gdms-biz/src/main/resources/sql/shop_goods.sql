@@ -26,11 +26,11 @@ create table t_goods (
 
 drop table if exists t_hotel;
 create table t_hotel (
-  hotel_id int(12) not null auto_increment primary key,
-  hotel_name varchar(32) default null,
-  hotel_price varchar(32) default null,
-  checkin_time timestamp default current_timestamp,
-  create_at timestamp default current_timestamp,
-  update_at timestamp default current_timestamp,
-  delete_flag varchar(10) default 'N'
+    hotel_id int(12) not null auto_increment primary key,
+    hotel_name varchar(32) default null,
+    hotel_price varchar(32) default null,
+    checkin_time timestamp default current_timestamp,
+    create_at timestamp default current_timestamp,
+    update_at timestamp default current_timestamp,
+    delete_flag varchar(10) default 'N'
 ) engine=InnoDB default charset=utf8;

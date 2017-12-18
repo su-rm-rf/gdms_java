@@ -46,3 +46,12 @@ mybatis
 	
 spring和springmvc搭配
 spring和mybatis搭配
+
+spring过滤器
+	在web.xml中配置
+	Filter, OncePerRequestFilter
+	
+spring拦截器
+	在servlet.xml中配置
+	顺序调用preHandler，逆序依次调用postHandler和afterCompletion
+	

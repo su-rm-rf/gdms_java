@@ -45,7 +45,7 @@ root
 		model
 		serviceimpl
 		dao
-		daoimpl
+		mapping.xml
 	web
 		controller
 ```

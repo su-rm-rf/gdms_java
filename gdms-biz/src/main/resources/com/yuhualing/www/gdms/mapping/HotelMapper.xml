@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuhualing.www.gdms.dao.HotelMapper">
+  <resultMap id="BaseResultMap" type="com.yuhualing.www.gdms.model.Hotel">
+    <id column="hotel_id" jdbcType="INTEGER" property="hotelId" />
+    <result column="hotel_name" jdbcType="VARCHAR" property="hotelName" />
+    <result column="hotel_price" jdbcType="VARCHAR" property="hotelPrice" />
+    <result column="checkin_time" jdbcType="TIMESTAMP" property="checkinTime" />
+    <result column="create_at" jdbcType="TIMESTAMP" property="createAt" />
+    <result column="update_at" jdbcType="TIMESTAMP" property="updateAt" />
+    <result column="delete_flag" jdbcType="VARCHAR" property="deleteFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    hotel_id, hotel_name, hotel_price, checkin_time, create_at, update_at, delete_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_hotel
+    where hotel_id = #{hotelId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_hotel
+    where hotel_id = #{hotelId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuhualing.www.gdms.model.Hotel">
+    insert into t_hotel (hotel_id, hotel_name, hotel_price, 
+      checkin_time, create_at, update_at, 
+      delete_flag)
+    values (#{hotelId,jdbcType=INTEGER}, #{hotelName,jdbcType=VARCHAR}, #{hotelPrice,jdbcType=VARCHAR}, 
+      #{checkinTime,jdbcType=TIMESTAMP}, #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP}, 
+      #{deleteFlag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuhualing.www.gdms.model.Hotel">
+    insert into t_hotel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="hotelId != null">
+        hotel_id,
+      </if>
+      <if test="hotelName != null">
+        hotel_name,
+      </if>
+      <if test="hotelPrice != null">
+        hotel_price,
+      </if>
+      <if test="checkinTime != null">
+        checkin_time,
+      </if>
+      <if test="createAt != null">
+        create_at,
+      </if>
+      <if test="updateAt != null">
+        update_at,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="hotelId != null">
+        #{hotelId,jdbcType=INTEGER},
+      </if>
+      <if test="hotelName != null">
+        #{hotelName,jdbcType=VARCHAR},
+      </if>
+      <if test="hotelPrice != null">
+        #{hotelPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="checkinTime != null">
+        #{checkinTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createAt != null">
+        #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null">
+        #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuhualing.www.gdms.model.Hotel">
+    update t_hotel
+    <set>
+      <if test="hotelName != null">
+        hotel_name = #{hotelName,jdbcType=VARCHAR},
+      </if>
+      <if test="hotelPrice != null">
+        hotel_price = #{hotelPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="checkinTime != null">
+        checkin_time = #{checkinTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createAt != null">
+        create_at = #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null">
+        update_at = #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where hotel_id = #{hotelId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuhualing.www.gdms.model.Hotel">
+    update t_hotel
+    set hotel_name = #{hotelName,jdbcType=VARCHAR},
+      hotel_price = #{hotelPrice,jdbcType=VARCHAR},
+      checkin_time = #{checkinTime,jdbcType=TIMESTAMP},
+      create_at = #{createAt,jdbcType=TIMESTAMP},
+      update_at = #{updateAt,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=VARCHAR}
+    where hotel_id = #{hotelId,jdbcType=INTEGER}
+  </update>
+</mapper>

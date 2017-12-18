@@ -1,24 +1,21 @@
 package com.yuhualing.www.gdms.model;
 
-/**
- * Created by macbook on 2017/12/18.
- */
+import java.util.Date;
+
 public class Hotel {
-
     private Integer hotelId;
+
     private String hotelName;
+
     private String hotelPrice;
-    private String checkinDate;
-    private Boolean hasBreakfast;
 
-    public Hotel() {}
+    private Date checkinTime;
 
-    public Hotel(String hotelName, String hotelPrice, String checkinDate, Boolean hasBreakfast) {
-        this.hotelName = hotelName;
-        this.hotelPrice = hotelPrice;
-        this.checkinDate = checkinDate;
-        this.hasBreakfast = hasBreakfast;
-    }
+    private Date createAt;
+
+    private Date updateAt;
+
+    private String deleteFlag;
 
     public Integer getHotelId() {
         return hotelId;
@@ -33,7 +30,7 @@ public class Hotel {
     }
 
     public void setHotelName(String hotelName) {
-        this.hotelName = hotelName;
+        this.hotelName = hotelName == null ? null : hotelName.trim();
     }
 
     public String getHotelPrice() {
@@ -41,22 +38,38 @@ public class Hotel {
     }
 
     public void setHotelPrice(String hotelPrice) {
-        this.hotelPrice = hotelPrice;
+        this.hotelPrice = hotelPrice == null ? null : hotelPrice.trim();
     }
 
-    public String getCheckinDate() {
-        return checkinDate;
+    public Date getCheckinTime() {
+        return checkinTime;
     }
 
-    public void setCheckinDate(String checkinDate) {
-        this.checkinDate = checkinDate;
+    public void setCheckinTime(Date checkinTime) {
+        this.checkinTime = checkinTime;
     }
 
-    public Boolean getHasBreakfast() {
-        return hasBreakfast;
+    public Date getCreateAt() {
+        return createAt;
     }
 
-    public void setHasBreakfast(Boolean hasBreakfast) {
-        this.hasBreakfast = hasBreakfast;
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
+    }
+
+    public Date getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
+    }
+
+    public String getDeleteFlag() {
+        return deleteFlag;
+    }
+
+    public void setDeleteFlag(String deleteFlag) {
+        this.deleteFlag = deleteFlag == null ? null : deleteFlag.trim();
     }
 }

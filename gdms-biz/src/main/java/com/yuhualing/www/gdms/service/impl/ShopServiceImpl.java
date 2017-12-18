@@ -7,7 +7,6 @@ import com.yuhualing.www.gdms.service.IShopService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
