@@ -8,6 +8,7 @@
 ----
     shop( shop_id, shop_name, shop_city, shop_address )
     goods( goods_id, shop_id, goods_name, goods_desc )
+    hotel( hotel_id, hotel_name, hotel_price, hotel_checkin_date, hotel_has_breakfast )
 
 - [建表语句](#/gdms-biz/src/main/resources/sql/shop_goods.sql)
     

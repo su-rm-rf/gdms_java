@@ -17,6 +17,17 @@ public class Shop {
 
     private String deleteFlag;
 
+    public Shop() {}
+
+    public Shop(String shopName, String shopCity, String shopAddress, Date createAt, Date updateAt, String deleteFlag) {
+        this.shopName = shopName;
+        this.shopCity = shopCity;
+        this.shopAddress = shopAddress;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+        this.deleteFlag = deleteFlag;
+    }
+
     public Integer getShopId() {
         return shopId;
     }

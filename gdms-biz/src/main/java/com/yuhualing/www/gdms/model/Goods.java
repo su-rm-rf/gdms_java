@@ -17,6 +17,17 @@ public class Goods {
 
     private String deleteFlag;
 
+    public Goods() {}
+
+    public Goods(Integer shopId, String goodsName, String goodsDesc, Date createAt, Date updateAt, String deleteFlag) {
+        this.shopId = shopId;
+        this.goodsName = goodsName;
+        this.goodsDesc = goodsDesc;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+        this.deleteFlag = deleteFlag;
+    }
+
     public Integer getGoodsId() {
         return goodsId;
     }
